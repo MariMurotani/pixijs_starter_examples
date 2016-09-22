@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<title>Hello PixiJS</title>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.0/pixi.min.js"></script>
+<%= javascript_include_tag "/assets/pixijs/alias" %>
+<%= javascript_include_tag "/assets/pixijs/resources" %>
+<%= javascript_include_tag "/assets/pixijs/scene_base" %>
+<%= javascript_include_tag "/assets/pixijs/scenes/scene_guide" %>
+<%= javascript_include_tag "/assets/pixijs/scenes/scene_main" %>
+<%= javascript_include_tag "/assets/pixijs/main" %>
+
+<script type="text/javascript">
+//  this is roor class of this component, don't change name of this
+var myCanvasDrawer;
+
+//  start from doc ready
+$(document).ready(function(){
+  myCanvasDrawer = new CanvasDrawer(window.innerWidth,window.innerHeight,0x000000);
+  myCanvasDrawer.initialize();
+  myCanvasDrawer.switchStage("SceneMain","メインのシーン");
+});
+</script>
+
+<div id="explain" style="visibility:collapse;color:white;position:absolute;margin-right:auto;margin-left:auto;top:200px;">
+This is frame work to start pixijs quickly.<br>
+1. copy scenes/scene_guide.js and change name like scenes/scene_$hoge.js<br>
+2. modify start() to initialize scene<br>
+3. modify update() to update scene<br>
+4. modify destroy() for something such as saving data<br>
+<p>Procuded by mari.murotani</p>
+</div>
+</body>

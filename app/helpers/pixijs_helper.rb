@@ -1,0 +1,2 @@
+module PixijsHelper
+end
