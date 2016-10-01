@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PixiParticles [basic] | pixi.js</title>
+
+  <!--for particle-->
+  <script src="/assets/pixijs/pixi.min.js">
+
+  </script>
+  <!-- pixi-particles.js 1.2.1 -->
+  <script src="http://jsrun.it/assets/d/a/6/Z/da6ZI"></script>
+  <!-- stats.js -->
+  <script src="http://jsrun.it/assets/b/a/X/K/baXKG"></script>
+
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+  <script>
+    var stage, renderer, stats;
+    var loader;
+    var view, emitter;
+    var elapsed = Date.now();
+
+    function init() {
+      stats = new Stats();
+      stats.setMode(0);
+      stats.domElement.style.position = "fixed";
+      stats.domElement.style.right = "0px";
+      stats.domElement.style.top = "0px";
+      document.body.appendChild(stats.domElement);
+
+      stage = new PIXI.Container();
+      renderer = PIXI.autoDetectRenderer(600, 300, {backgroundColor: 0xFFFFFF});
+      document.body.appendChild(renderer.view);
+      renderer.view.style.display = "block";
+      renderer.view.style.width = "600px";
+      renderer.view.style.marginTop = "40px";
+      renderer.view.style.marginLeft = "auto";
+      renderer.view.style.marginRight = "auto";
+      renderer.view.style.paddingLeft = "0";
+      renderer.view.style.paddingRight = "0";
+
+      loader = new PIXI.loaders.Loader();
+      //loader.add("piyo", "assets/piyo.json");
+      loader.add("particle", "/assets/pixijs/Bubbles99px.png");
+      loader.on("complete", complete);
+      loader.load();
+
+      update();
+    }
+    function update() {
+      if (emitter) {
+        var time = Date.now();
+        emitter.update((time - elapsed)/1000);
+        elapsed = time;
+      }
+
+      renderer.render(stage);
+      requestAnimationFrame(update);
+
+      stats.update();
+    }
+    function complete() {
+      background();
+      initialize();
+      setup();
+    }
+    function initialize() {
+      view = new PIXI.Container();
+      stage.addChild(view);
+
+    }
+    function setup() {
+      var texture = PIXI.Texture.fromImage("/assets/pixijs/Bubbles99px.png");
+      var config = {
+        "alpha": {
+          "start": 1,
+          "end": 0.22
+        },
+        "scale": {
+          "start": 0.25,
+          "end": 0.75,
+          "minimumScaleMultiplier": 0.5
+        },
+        "color": {
+          "start": "#ffffff",
+          "end": "#ffffff"
+        },
+        "speed": {
+          "start": 150,
+          "end": 10
+        },
+        "acceleration": {
+          "x": 0,
+          "y": 0
+        },
+        "startRotation": {
+          "min": 0,
+          "max": 360
+        },
+        "noRotation": false,
+        "rotationSpeed": {
+          "min": 0,
+          "max": 10
+        },
+        "lifetime": {
+          "min": 4,
+          "max": 4
+        },
+        "blendMode": "normal",
+        "frequency": 0.016,
+        "emitterLifetime": -1,
+        "maxParticles": 500,
+        "pos": {
+          "x": 0,
+          "y": 0
+        },
+        "addAtBack": false,
+        "spawnType": "point"
+      };
+      emitter = new cloudkid.Emitter(view, texture, config);
+      emitter.updateOwnerPos(300, 225);
+    }
+    function background() {
+      var sky = new PIXI.Graphics();
+      stage.addChild(sky);
+      sky.beginFill(0x00AAE4);
+      sky.drawRect(0, 0, 600, 330);
+      sky.endFill();
+
+      var version = PIXI.VERSION;
+      var rendererType;
+      switch (renderer.type) {
+        case PIXI.RENDERER_TYPE.WEBGL :
+          rendererType = "WebGL";
+          break;
+        case PIXI.RENDERER_TYPE.CANVAS :
+          rendererType = "Context2D";
+          break;
+      }
+    }
+  </script>
+</head>
+<body onload="init();" style="background-color:#EEEEEE">
+</body>
+</html>

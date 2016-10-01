@@ -2,8 +2,29 @@
 <title>Hello PixiJS</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.pink-red.min.css" />
+
+<style type="text/css">
+.parent{
+  position: relative;
+  height: 100%;
+  width: 600px;
+  margin-right: auto;margin-left:auto;
+  overflow: hidden;
+}
+div.overflow{
+  width: 500px;
+  height: 600px;
+}
+
+</style>
+
 
 <script type="text/javascript">
 //  this is roor class of this component, don't change name of this
@@ -11,25 +32,43 @@ var myCanvasDrawer;
 
 //  start from doc ready
 $(document).ready(function(){
-  myCanvasDrawer = new CanvasDrawer(window.innerWidth,window.innerHeight,0x000000);
+  myCanvasDrawer = new CanvasDrawer(0,0,500,600,0x9ddee8);
   myCanvasDrawer.initialize();
   myCanvasDrawer.switchStage("SceneMain","メインのシーン");
 });
+
+//  this is for debugging mode
+stats = new Stats();
+stats.setMode(0);
+stats.domElement.style.position = "fixed";
+stats.domElement.style.left = "0px";
+stats.domElement.style.top = "0px";
+document.body.appendChild(stats.domElement);
+
 </script>
-<div id="stage1">
-  <div id="overlay1"></div>
-</div>
-<div id="stage2">
-  <div id="overlay2"></div>
-</div>
 
+<!------- pixi rendering area ------>
+<div class="parent overflow" style="width:500px;">
+  <div>
+    <div id="stage1"></div>
+    <div id="stage2"></div>
+    <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--accent">
+      <i class="material-icons">more_vert</i>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
+      <li class="mdl-menu__item" onclick="myCanvasDrawer.switchStage('SceneMain','メインのシーン');">Home</li>
+    </ul>
+  </div>
+  </div>
+</div>
+<!------- pixi rendering area ------>
 
+<!------- template which is used in guest page ------>
 <div id="explain" style="visibility:collapse;color:white;position:absolute;margin-right:auto;margin-left:auto;top:200px;">
-This is frame work to start pixijs quickly.<br>
-1. copy scenes/scene_guide.js and change name like scenes/scene_$hoge.js<br>
-2. modify start() to initialize scene<br>
-3. modify update() to update scene<br>
-4. modify destroy() for something such as saving data<br>
-<p>Procuded by mari.murotani</p>
+
+
+
 </div>
+<!------- template which is used in guest page  ------>
+
 </body>

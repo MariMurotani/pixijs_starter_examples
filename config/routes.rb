@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'pixijs/index'
+  get 'pixijs/test'
 
   get 'pixijs/loadpoint'
 

@@ -3,7 +3,7 @@ var SceneMain = (function (_super) {
     function SceneMain() {
         _super.apply(this, arguments);
         this.dataLoad(function(data){
-          console.log("succsss to load data");
+          //console.log("succsss to load data");
         },function(err){
           alert("error");
         });
@@ -14,7 +14,7 @@ var SceneMain = (function (_super) {
       _super.prototype.destroy();
 
       this.dataSave(function(data){
-        console.log("succsss to save data");
+        //console.log("succsss to save data");
       },function(err){
         alert("error");
       },{"user":"aaaa","data":{"key":"value"}});

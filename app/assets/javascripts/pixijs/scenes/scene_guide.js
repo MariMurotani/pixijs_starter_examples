@@ -1,3 +1,6 @@
+var view, emitter;
+var elapsed = Date.now();
+
 var SceneGuide = (function (_super) {
     __extends(SceneGuide, _super);
     function SceneGuide() {
@@ -21,18 +24,34 @@ var SceneGuide = (function (_super) {
       this.title = new Sprite(resources["/assets/pixijs/logo.png"].texture);
       this.title = __setCenterX(this.title);
       this.addChild(this.title);
-      myCanvasDrawer.render();
+       this.emitter = new cloudkid.Emitter(
+           myCanvasDrawer.currentStage,
+        [PIXI.Texture.fromImage('/assets/pixijs/Bubbles99px.png')],
+         PARTICLE_CONFIG1
+       );
 
-      // visible html element
-      var element = $("#explain").clone();
-      element.css("visibility","visible");
+        //   for particle
+        // Calculate the current time
+        this.elapsed = Date.now();
+        // Start emitting
+        this.emitter.emit = true;
+        
 
-      div = $(myCanvasDrawer.overlay_prefix+"2").append(element);
     };
 
+
+
     //  override this method to handle update event
-    SceneGuide.prototype.update = function () {
+    SceneGuide.prototype.update = function (e) {
       _super.prototype.update();
+
+        // for particle
+        var now = Date.now();
+        if(this.emitter != null) {
+            this.emitter.update((now - this.elapsed) * 0.001);
+            this.elapsed = now;
+            myCanvasDrawer.render();
+        }
     };
     return SceneGuide;
 })(SceneBase);
