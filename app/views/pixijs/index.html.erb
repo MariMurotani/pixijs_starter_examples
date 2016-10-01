@@ -1,6 +1,9 @@
 <meta charset="utf-8">
 <title>Hello PixiJS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 
 <script type="text/javascript">
 //  this is roor class of this component, don't change name of this
@@ -13,6 +16,13 @@ $(document).ready(function(){
   myCanvasDrawer.switchStage("SceneMain","メインのシーン");
 });
 </script>
+<div id="stage1">
+  <div id="overlay1"></div>
+</div>
+<div id="stage2">
+  <div id="overlay2"></div>
+</div>
+
 
 <div id="explain" style="visibility:collapse;color:white;position:absolute;margin-right:auto;margin-left:auto;top:200px;">
 This is frame work to start pixijs quickly.<br>
