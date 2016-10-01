@@ -35,7 +35,7 @@ var SceneGuide = (function (_super) {
         this.elapsed = Date.now();
         // Start emitting
         this.emitter.emit = true;
-        
+
 
     };
 
