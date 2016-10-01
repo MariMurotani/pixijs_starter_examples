@@ -1,7 +1,8 @@
 class PixijsController < ApplicationController
   def index
   end
-
+  def test
+  end
   def loadpoint
     render json: {"user":"aaaa","data":{"key":"value"}}
   end

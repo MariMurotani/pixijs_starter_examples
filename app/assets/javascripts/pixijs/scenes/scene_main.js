@@ -3,7 +3,7 @@ var SceneMain = (function (_super) {
     function SceneMain() {
         _super.apply(this, arguments);
         this.dataLoad(function(data){
-          console.log("succsss to load data");
+          //console.log("succsss to load data");
         },function(err){
           alert("error");
         });
@@ -14,7 +14,7 @@ var SceneMain = (function (_super) {
       _super.prototype.destroy();
 
       this.dataSave(function(data){
-        console.log("succsss to save data");
+        //console.log("succsss to save data");
       },function(err){
         alert("error");
       },{"user":"aaaa","data":{"key":"value"}});
@@ -26,24 +26,24 @@ var SceneMain = (function (_super) {
         _super.prototype.start();
         // title image
         var title = new Sprite(resources["/assets/pixijs/title.png"].texture);
-        title = __setCenterX(myCanvasDrawer.windowWidth,title);
-        myCanvasDrawer.currentStage.addChild(title);
+        title = __setCenterX(title);
+        this.addChild(title);
 
-        // scenes : auto loaded from scenes-folder if scene_$hoge.js are included
         var scenes = CanvasDrawer.prototype.getScenes();
         for(var key in scenes){
-          //var scene = __setCenterX(myCanvasDrawer.windowWidth,new PIXI.Text(scenes[key], __style));
-          var scene = __setCenterX(myCanvasDrawer.windowWidth,new PIXI.Text(scenes[key], __style));
+          //var scene = __setCenterX(this.windowWidth,new PIXI.Text(scenes[key], __style));
+          var scene = __setCenterX(new PIXI.Text(scenes[key], __style));
           scene.name = scenes[key];
           scene.y += title.height + (scene.height * key) + 20;
           var rect = new PIXI.Rectangle(0 ,0 ,scene.width,scene.height);
           scene.hitArea = rect;
           scene.interactive = true;
           scene.on('mousedown',function(e){
-            myCanvasDrawer.switchStage(this._text,this._text);
+             myCanvasDrawer.switchStage(this._text,this._text);
           });
           this.addChild(scene);
         }
+
         myCanvasDrawer.render();
     };
     //  override this method to handle update event
