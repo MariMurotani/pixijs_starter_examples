@@ -48,4 +48,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # testing my gem
-gem 'pixijs_starter', path: '/Users/murotanimari/SharedCent7/HelloRuby/pixijs_starter'
+gem 'pixijs_starter', :git => 'git://github.com/MariMurotani/pixijs_starter',:branch => "master"

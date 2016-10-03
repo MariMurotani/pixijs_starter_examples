@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/murotanimari/SharedCent7/HelloRuby/pixijs_starter
+GIT
+  remote: git://github.com/MariMurotani/pixijs_starter
+  revision: 703723380bfaadb7fbc892bf330ac0c412aa275e
+  branch: master
   specs:
     pixijs_starter (0.1.0)
 
