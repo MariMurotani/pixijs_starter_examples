@@ -14,7 +14,7 @@
 .parent{
   position: relative;
   height: 100%;
-  width: 600px;
+  width: 100%;
   margin-right: auto;margin-left:auto;
   overflow: hidden;
 }
@@ -32,7 +32,17 @@ var myCanvasDrawer;
 
 //  start from doc ready
 $(document).ready(function(){
-  myCanvasDrawer = new CanvasDrawer(0,0,500,600,0x9ddee8);
+  var displayWidth = window.innerWidth;
+  var displayHeight = window.innerHeight;
+  var pattern  = new RegExp("iPhone|iPad|Android");
+  if(!pattern.test(navigator.userAgent)){
+    displayWidth = 500;
+  }
+  $( "div.overflow" ).css( "width" , displayWidth);
+  $( "div.overflow" ).css( "height" ,displayHeight);
+
+
+  myCanvasDrawer = new CanvasDrawer(0,0,displayWidth,displayHeight,0x9ddee8);
   myCanvasDrawer.initialize();
   myCanvasDrawer.switchStage("SceneMain","メインのシーン");
 });

@@ -4,13 +4,13 @@ var SAVE_URL = "/pixijs/savepoint";
 
 //  This is list of preload target
 var PRELOAD_RESOUCES = {
-  "SceneMain": [ // name of class => scene_main.js == SceneMain
-    "/assets/pixijs/title.png"
-  ],
-  "SceneGuide": [ // name of class => scene_guide.js == SceneGuide
-    "/assets/pixijs/logo.png",// actual file name
-    "/assets/pixijs/Bubbles99px.png"
-  ]
+    "SceneMain": [ // name of class => scene_main.js == SceneMain
+        "/assets/pixijs/title.png"
+    ],
+    "SceneGuide": [ // name of class => scene_guide.js == SceneGuide
+        "/assets/pixijs/logo.png",// actual file name
+        "/assets/pixijs/Bubbles99px.png"
+    ]
 }
 
 var PARTICLE_CONFIG1 = {
