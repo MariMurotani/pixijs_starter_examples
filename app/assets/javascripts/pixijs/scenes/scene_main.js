@@ -56,7 +56,7 @@ var SceneMain = (function (_super) {
             this.addChild(scene);
         }
 
-        myCanvasDrawer.render();
+        this.render();
     };
     //  override this method to handle update event
     SceneMain.prototype.update = function () {
