@@ -12,7 +12,7 @@ var SceneTest = (function (_super) {
     //  use this method as start point of this scene
     SceneTest.prototype.start = function () {
         _super.prototype.start();
-        myCanvasDrawer.render();
+         this.render();
     };
     //  override this method to handle update event
     SceneTest.prototype.update = function () {

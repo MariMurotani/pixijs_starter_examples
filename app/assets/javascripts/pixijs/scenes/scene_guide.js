@@ -56,7 +56,7 @@ var SceneGuide = (function (_super) {
         if (this.emitter != null) {
             this.emitter.update((now - this.elapsed) * 0.001);
             this.elapsed = now;
-            myCanvasDrawer.render();
+            this.render();
         }
     };
     return SceneGuide;
