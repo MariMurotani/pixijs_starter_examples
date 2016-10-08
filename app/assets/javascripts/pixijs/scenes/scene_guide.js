@@ -36,16 +36,14 @@ var SceneGuide = (function (_super) {
 
         // title image
         this.title = new Sprite(resources["/assets/pixijs/logo.png"].texture);
-        this.title = __setCenterX(this.title);
         this.addChild(this.title);
 
-        //  tween lite
-        this.title.alpha = 0.85;
-        this.title.anchor.x = 0.5;
-        this.title.anchor.y = 0.5;
-        this.title.scale.x = 0.7;
+        TweenLite.set(this.title, { pixi: {
+            alpha: 0.85
+        }});
 
-        TweenLite.to(this.title.scale, 2, {x: 1.5, y: 1.2});
+        TweenLite.to(this.title, 3, {x: __getCenterX(this.title) , ease:Bounce.easeIn, alpha:1});
+
     };
 
 
