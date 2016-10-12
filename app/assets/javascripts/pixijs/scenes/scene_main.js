@@ -45,15 +45,12 @@ var SceneMain = (function (_super) {
             scene.hitArea = rect;
             scene.interactive = true;
             // for pc
-            scene.on('mousedown', function (e) {
-                myCanvasDrawer.switchStage(this._text, this._text);
-            });
+            scene.on('mousedown', this.onAction);
             // for mobile
-            scene.on('touchstart', function (e) {
-                myCanvasDrawer.switchStage(this._text, this._text);
-            });
-
+            scene.on('touchstart',this.onAction);
             this.addChild(scene);
+
+
         }
 
         this.render();
@@ -62,5 +59,10 @@ var SceneMain = (function (_super) {
     SceneMain.prototype.update = function () {
         _super.prototype.update();
     };
+
+    SceneMain.prototype.onAction = function(e){
+        myCanvasDrawer.switchStage(this._text, this._text);
+    }
+
     return SceneMain;
 })(SceneBase);

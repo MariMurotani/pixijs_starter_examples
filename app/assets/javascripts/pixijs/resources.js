@@ -2,7 +2,8 @@
 var LOAD_URL = "/pixijs/loadpoint";
 var SAVE_URL = "/pixijs/savepoint";
 
-//  This is list of preload target
+//  This is list of preload picture resources
+//  If you set value in this object, it will loaded when app starts
 var PRELOAD_RESOUCES = {
     "SceneMain": [ // name of class => scene_main.js == SceneMain
         "/assets/pixijs/title.png"
@@ -13,6 +14,14 @@ var PRELOAD_RESOUCES = {
     ]
 }
 
+//  This is list of preload html resources
+//  If you set value in this object, it will loaded when app starts
+var PRELOAD_RESOUCES = [
+    '/assets/pixijs/html/simple.html',
+    '/assets/pixijs/html/card1.html'
+]
+
+//  This is particle setting , modify with PixiParticlesEditor
 var PARTICLE_CONFIG1 = {
     "alpha": {
         "start": 1,

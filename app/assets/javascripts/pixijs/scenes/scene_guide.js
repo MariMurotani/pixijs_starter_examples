@@ -21,8 +21,7 @@ var SceneGuide = (function (_super) {
     SceneGuide.prototype.start = function () {
         _super.prototype.start();
 
-        //   for particle
-        // Calculate the current time
+        //   particle example
         this.particle_container = new PIXI.Container();
         this.addChild(this.particle_container);
         this.emitter = new cloudkid.Emitter(
@@ -31,18 +30,34 @@ var SceneGuide = (function (_super) {
             PARTICLE_CONFIG1
         );
         this.elapsed = Date.now();
-        // Start emitting
         this.emitter.emit = true;
+        //   particle example
 
-        // title image
+        //  tween lite example
         this.title = new Sprite(resources["/assets/pixijs/logo.png"].texture);
         this.addChild(this.title);
-
         TweenLite.set(this.title, { pixi: {
             alpha: 0.85
         }});
-
         TweenLite.to(this.title, 3, {x: __getCenterX(this.title) , ease:Bounce.easeIn, alpha:1});
+        //  tween lite example
+
+        //  over lay html component example
+        $.ajax({
+            type: 'GET',
+            url: '/assets/pixijs/html/card1.html',
+            dataType: 'html',
+            success: function(data) {
+                $('#overlay1').append(data);
+                $('#dialog1').css({left: '100px', top:'500px'});
+                $('#dialog1').animate({left: '100px', top:'100px'}, "slow");
+            }
+        });
+        //  over lay html component example
+
+        // var data = resources['/assets/pixijs/html/simple.html'];
+        // console.log(data);
+        // $('#overlay1').append(data);
 
     };
 
