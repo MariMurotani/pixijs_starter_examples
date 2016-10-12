@@ -16,7 +16,7 @@ var PRELOAD_RESOUCES = {
 
 //  This is list of preload html resources
 //  If you set value in this object, it will loaded when app starts
-var PRELOAD_RESOUCES = [
+var PRELOAD_HTML = [
     '/assets/pixijs/html/simple.html',
     '/assets/pixijs/html/card1.html'
 ]
