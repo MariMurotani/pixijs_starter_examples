@@ -9,11 +9,10 @@ var SceneGuide = (function (_super) {
 
     //  this is called just before scene changes
     SceneGuide.prototype.destroy = function () {
+        //  remove all children from overlay of screen
+        this.emptyStageDom();
+        //  call super class's destroy after yours are finised
         _super.prototype.destroy();
-
-        // invisible html element
-        element = document.getElementById("explain");
-        element.style.visibility = "collapse";
     };
 
     //  this function is called as call back of resource load
@@ -43,21 +42,12 @@ var SceneGuide = (function (_super) {
         //  tween lite example
 
         //  over lay html component example
-        $.ajax({
-            type: 'GET',
-            url: '/assets/pixijs/html/card1.html',
-            dataType: 'html',
-            success: function(data) {
-                $('#overlay1').append(data);
-                $('#dialog1').css({left: '100px', top:'500px'});
-                $('#dialog1').animate({left: '100px', top:'100px'}, "slow");
-            }
-        });
-        //  over lay html component example
+        //  append html into overlay of screen
+        this.appenedStageDom(resources['/assets/pixijs/html/card1.html']);
+        $('#dialog1').css({left: '100px', top:'500px'});
+        $('#dialog1').animate({left: '100px', top:'100px'}, "slow");
 
-        // var data = resources['/assets/pixijs/html/simple.html'];
-        // console.log(data);
-        // $('#overlay1').append(data);
+        //  over lay html component example;
 
     };
 
